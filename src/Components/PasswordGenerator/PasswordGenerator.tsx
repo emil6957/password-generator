@@ -1,8 +1,12 @@
 import React from "react";
+import GeneratorOptions from "../GeneratorOptions/GeneratorOptions";
 
 function PasswordGenerator() {
-    <div className="password-generator">
-    </div>
+    return (
+        <div className="password-generator">
+            <GeneratorOptions />
+        </div>
+    )
 };
 
 export default PasswordGenerator;
