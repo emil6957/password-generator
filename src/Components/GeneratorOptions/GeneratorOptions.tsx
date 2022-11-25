@@ -1,13 +1,23 @@
-import React from "react";
+import React, { SyntheticEvent, useState } from "react";
+import { NumericLiteral } from "typescript";
 import "./GeneratorOptions.css"
 
 function GeneratorOptions() {
+    const [charLength, setCharLength]: [number, Function] = useState<number>(10);
+
+    function updateCharLength(e: SyntheticEvent): void {
+        const target = e.target as typeof e.target & {
+            value: { value: number };
+        }
+        setCharLength(target.value);
+    }
+
     return (
         <div className="generator-options">
             <div className="generator-options__length">
                 <label htmlFor="length" className="generator-options__label">Character Length</label>
-                <p className="generator-options__option generator-options__length-num">9</p>
-                <input className="generator-options__input" type="range" id="length"></input>
+                <p className="generator-options__option generator-options__length-num">{charLength}</p>
+                <input className="generator-options__input" type="range" id="length" min="5" max="15" value={charLength} onChange={(e) => updateCharLength(e)}></input>
             </div>
             <div className="generator-options__checkboxes">
                 <div className="generator-options__option generator-options__upper-case">
