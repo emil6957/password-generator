@@ -1,5 +1,4 @@
 import React, { SyntheticEvent, useState } from "react";
-import { NumericLiteral } from "typescript";
 import "./GeneratorOptions.css"
 
 function GeneratorOptions() {
