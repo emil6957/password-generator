@@ -1,3 +1,19 @@
 .generate-button {
 
 }
+
+.generate-button__btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.generate-button__btn-text {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.generate-button__btn-img {
+    height: 2rem;
+    width: 1.5rem;
+}
