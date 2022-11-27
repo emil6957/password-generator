@@ -1,3 +1,49 @@
 .strength-meter {
+    display: flex;
+    justify-content: space-between;
+}
 
+.strength-meter__text {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.strength-meter__meter {
+    display: flex;
+    gap: 1rem;
+}
+
+.strength-meter__meter-text {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.strength-meter__display {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+.strength-meter__bar {
+    display: inline-block;
+    width: .5rem;
+    height: 1.5rem;
+    border: .125rem solid white;
+}
+
+.strength-meter__bar-filled-easy {
+    background-color: greenyellow;    
+    border: .125rem solid greenyellow;
+}
+
+.strength-meter__bar-filled-medium {
+    background-color: orange;
+    border: .125rem solid orange;
+}
+
+.strength-meter__bar-filled-hard {
+    background-color: red;    
+    border: .125rem solid red;
 }
