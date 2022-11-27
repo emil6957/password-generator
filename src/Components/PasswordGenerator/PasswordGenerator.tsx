@@ -9,7 +9,7 @@ function PasswordGenerator() {
         <div className="password-generator">
             <PasswordDisplay password={"placeholder"} />
             <GeneratorOptions />
-            <StrengthMeter />
+            <StrengthMeter strengthText={"placeholder"} />
             <GenerateButton />
         </div>
     )
