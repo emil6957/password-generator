@@ -1,11 +1,15 @@
 .generate-button {
-
+    margin-top: 1rem;
 }
 
 .generate-button__btn {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
+    width: 100%;
+    padding: .75rem;
+    width: 100%;
 }
 
 .generate-button__btn-text {

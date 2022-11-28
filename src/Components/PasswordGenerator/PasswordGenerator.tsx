@@ -1,16 +1,13 @@
 import React from "react";
-import GenerateButton from "../GenerateButton/GenerateButton";
-import GeneratorOptions from "../GeneratorOptions/GeneratorOptions";
+import "./PasswordGenerator.css"
 import PasswordDisplay from "../PasswordDisplay/PasswordDisplay";
-import StrengthMeter from "../StrengthMeter/StrengthMeter";
+import PasswordGeneratorBottom from "../PasswordGeneratorBottom/PasswordGeneratorBottom";
 
 function PasswordGenerator() {
     return (
         <div className="password-generator">
             <PasswordDisplay password={"placeholder"} />
-            <GeneratorOptions />
-            <StrengthMeter strengthText={"placeholder"} />
-            <GenerateButton />
+            <PasswordGeneratorBottom />
         </div>
     )
 };
