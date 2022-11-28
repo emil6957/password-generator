@@ -15,7 +15,7 @@ function GeneratorOptions() {
         <div className="generator-options">
             <div className="generator-options__length">
                 <label htmlFor="length" className="generator-options__label">Character Length</label>
-                <p className="generator-options__option generator-options__length-num">{charLength}</p>
+                <span className="generator-options__option generator-options__length-num">{charLength}</span>
                 <input className="generator-options__input" type="range" id="length" min="5" max="15" value={charLength} onChange={(e) => updateCharLength(e)}></input>
             </div>
             <div className="generator-options__checkboxes">
