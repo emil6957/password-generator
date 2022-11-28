@@ -9,7 +9,7 @@ function PasswordDisplay({ password }: { password: string }) {
 
     return (
         <div className="password-display">
-            <p className="password-display__text">{password}</p>
+            <input className="password-display__text" type="text" value={password} disabled />
             <button className="password-display__copy-btn" onClick={() => copyClipboard(password)}><img className="password-display__copy-img" src={copy} /></button>
         </div>
     )
