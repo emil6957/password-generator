@@ -1,4 +1,13 @@
 .App {
-  background-color: #333;
+  font-family: monospace; 
+  background-image: linear-gradient(rgb(2, 1, 26), black);
   height: 100vh;
+}
+
+input {
+  font-family: monospace;
+}
+
+button {
+  font-family: monospace;
 }
