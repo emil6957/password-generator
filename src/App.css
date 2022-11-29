@@ -1,13 +1,16 @@
 .App {
+  font-size: 1rem;
   font-family: monospace; 
   background-image: linear-gradient(rgb(2, 1, 26), black);
   height: 100vh;
 }
 
 input {
+  font-size: 1rem;
   font-family: monospace;
 }
 
 button {
+  font-size: 1rem;
   font-family: monospace;
 }

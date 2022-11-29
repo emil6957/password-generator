@@ -1,25 +1,28 @@
 .strength-meter {
     display: flex;
     justify-content: space-between;
-    background-color: #222;
+    align-items: center;
+    background-image: linear-gradient(rgb(2, 1, 26), black);
     padding: 1rem;
     margin-top: 1rem;
 }
 
 .strength-meter__text {
-    color: white;
+    color: #777680;
     text-transform: uppercase;
     font-weight: 600;
 }
 
 .strength-meter__meter {
     display: flex;
+    align-items: center;
     gap: 1rem;
 }
 
 .strength-meter__meter-text {
     color: white;
     text-transform: uppercase;
+    font-size: 1.25rem;
     font-weight: 700;
 }
 
