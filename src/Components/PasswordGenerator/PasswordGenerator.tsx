@@ -6,6 +6,7 @@ import PasswordGeneratorBottom from "../PasswordGeneratorBottom/PasswordGenerato
 function PasswordGenerator() {
     return (
         <div className="password-generator">
+            <h1 className="password-generator__header">Password Generator</h1>
             <PasswordDisplay password={"placeholder"} />
             <PasswordGeneratorBottom />
         </div>
