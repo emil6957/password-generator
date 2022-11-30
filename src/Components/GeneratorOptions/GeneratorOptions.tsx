@@ -1,15 +1,19 @@
 import React, { SyntheticEvent, useState } from "react";
 import "./GeneratorOptions.css"
 
-function GeneratorOptions() {
+interface GeneratorOptionsProps {
+    updateOptions: Function,
+};
+
+function GeneratorOptions({ updateOptions }: GeneratorOptionsProps) {
     const [charLength, setCharLength]: [number, Function] = useState<number>(10);
 
     function updateCharLength(e: SyntheticEvent): void {
         const target = e.target as typeof e.target & {
             value: { value: number };
-        }
+        };
         setCharLength(target.value);
-    }
+    };
 
     return (
         <div className="generator-options">
@@ -37,7 +41,7 @@ function GeneratorOptions() {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default GeneratorOptions;

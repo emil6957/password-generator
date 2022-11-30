@@ -1,7 +1,11 @@
 import React from "react";
 import "./StrengthMeter.css";
 
-function StrengthMeter({strengthText}: {strengthText: string}) {
+interface StrengthMeterProps {
+    strengthText: string,
+}
+
+function StrengthMeter({strengthText}: StrengthMeterProps) {
     return (
         <div className="strength-meter">
             <span className="strength-meter__text">Strength</span>
@@ -15,7 +19,7 @@ function StrengthMeter({strengthText}: {strengthText: string}) {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default StrengthMeter;
