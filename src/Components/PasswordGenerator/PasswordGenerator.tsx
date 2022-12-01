@@ -17,6 +17,41 @@ function PasswordGenerator() {
     };
 
     function updateOptions(option: string): void {
+        if(option === "uppercase") {
+            setOptions((prevOptions) => {
+                return {
+                    ...prevOptions,
+                    uppercase: !prevOptions.uppercase,
+                };
+            });
+        };
+
+        if(option === "lowercase") {
+            setOptions((prevOptions) => {
+                return {
+                    ...prevOptions,
+                    lowercase: !prevOptions.lowercase,
+                };
+            });
+        };
+        
+        if(option === "numbers") {
+            setOptions((prevOptions) => {
+                return {
+                    ...prevOptions,
+                    numbers: !prevOptions.numbers,
+                };
+            });
+        };
+
+        if(option === "symbols") {
+            setOptions((prevOptions) => {
+                return {
+                    ...prevOptions,
+                    symbols: !prevOptions.symbols,
+                };
+            });
+        };
     };
 
     return (
