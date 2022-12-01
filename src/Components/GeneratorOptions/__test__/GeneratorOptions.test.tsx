@@ -4,7 +4,8 @@ import GeneratorOptions from "../GeneratorOptions";
 
 test("Character Length number and slider value are synced", () => {
     const updateOptions = jest.fn();
-    render(<GeneratorOptions updateOptions={updateOptions}/>);
+    const updatePasswordLength = jest.fn();
+    render(<GeneratorOptions passwordLength={10} updatePasswordLength={updatePasswordLength} updateOptions={updateOptions}/>);
     const slider = screen.getByRole("slider");
     const charLength = screen.getByText("10");
 
@@ -17,7 +18,8 @@ test("Character Length number and slider value are synced", () => {
 
 test("Checkboxes are checked as they are clicked", () => {
     const updateOptions = jest.fn();
-    render(<GeneratorOptions updateOptions={updateOptions} />);
+    const updatePasswordLength = jest.fn();
+    render(<GeneratorOptions passwordLength={10} updatePasswordLength={updatePasswordLength} updateOptions={updateOptions} />);
     const checkbox = screen.getByLabelText("Include Uppercase Letters");
     fireEvent.click(checkbox);
     expect(checkbox).toBeChecked();
