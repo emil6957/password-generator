@@ -6,12 +6,20 @@ import PasswordGeneratorBottom from "../PasswordGeneratorBottom/PasswordGenerato
 
 function PasswordGenerator() {
     const [password, setPassword] = useState<string>("");
+    const [passwordLength, setPasswordLength]: [number, Function] = useState(10);
     const [options, setOptions] = useState<Options>({
         uppercase: false,
         lowercase: false,
         numbers: false,
         symbols: false,
     });
+
+    function updatePasswordLength(e: SyntheticEvent): void {
+        const target = e.target as typeof e.target & {
+            value: { value: number };
+        };
+        setPasswordLength(target.value);
+    };
 
     function generatePassword(): void {
     };
