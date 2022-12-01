@@ -27,7 +27,7 @@ describe("Testing each checkbox generating password individually", () => {
         const generateButton = screen.getByRole("button", { name: /generate/i });
         fireEvent.click(generateButton);
 
-        expect(password).toMatch(/[a-z]/);
+        expect(password).toHaveDisplayValue(/^[a-z]+$/);
     });
 
     test("new passwords are generated with uppercase option on containing only uppercase", () => {
@@ -40,7 +40,7 @@ describe("Testing each checkbox generating password individually", () => {
         const generateButton = screen.getByRole("button", { name: /generate/i });
         fireEvent.click(generateButton);
 
-        expect(password).toMatch(/[A-Z]/);
+        expect(password).toHaveDisplayValue(/^[A-Z]+$/);
     });
 
     test("new passwords are generated with numbers option on containing only numbers", () => {
@@ -53,7 +53,7 @@ describe("Testing each checkbox generating password individually", () => {
         const generateButton = screen.getByRole("button", { name: /generate/i });
         fireEvent.click(generateButton);
 
-        expect(password).toMatch(/[0-9]/);
+        expect(password).toHaveDisplayValue(/^[0-9]+$/);
     });
 
     test("new passwords are generated with symbols option on containing only symbols", () => {
@@ -66,12 +66,12 @@ describe("Testing each checkbox generating password individually", () => {
         const generateButton = screen.getByRole("button", { name: /generate/i });
         fireEvent.click(generateButton);
 
-        expect(password).toMatch(/[\W\S_]/);
+        expect(password).toHaveDisplayValue(/^[\W\S_]+$/);
     });
 });
 
 describe("Testing passwords generated with slider", () => {
-    test("new passwords are generated with different values dependant on the slider value", () => {
+    test("new passwords are generated with different lengths dependant on the slider value", () => {
         render(<PasswordGenerator />);
         const password = screen.getByPlaceholderText("Password123!");
         const lowercaseCheckbox = screen.getByLabelText("Include Lowercase Letters");
@@ -83,10 +83,12 @@ describe("Testing passwords generated with slider", () => {
         const generateButton = screen.getByRole("button", { name: /generate/i });
         fireEvent.click(generateButton);
 
-        expect(password).toHaveLength(12);
+        expect(password).toHaveDisplayValue(/^[a-z]{12}$/);
 
         fireEvent.change(slider, { target: { value: 7 }});
-        expect(password).toHaveLength(7);
+        fireEvent.click(generateButton);
+
+        expect(password).toHaveDisplayValue(/^[a-z]{7}$/);
     });
 });
 
@@ -103,12 +105,15 @@ describe("Testing both slider and multiple checkboxes", () => {
         fireEvent.change(slider, { target: { value: 9 }});
 
         const generateButton = screen.getByRole("button", { name: /generate/i });
-        fireEvent.click(generateButton);
 
-        expect(password).toHaveLength(9);
-        expect(password).toMatch(/[A-Z]/);
-        expect(password).toMatch(/[a-z]/);
-        expect(password).toMatch(/[0-9]/);
-        expect(password).toMatch(/[\W\S_]/);
+        // Looping this test due to possibility of getting lucky test result that passes
+        for(let i = 0; i < 20; i++) {
+            fireEvent.click(generateButton);
+            expect(password).toHaveDisplayValue(/^[a-zA-z0-9\W\S_]{9}$/);
+            expect(password).toHaveDisplayValue(/[A-Z]/);
+            expect(password).toHaveDisplayValue(/[a-z]/);
+            expect(password).toHaveDisplayValue(/[0-9]/);
+            expect(password).toHaveDisplayValue(/[\W\S_]/);
+        }
     });
 });
