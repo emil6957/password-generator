@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { SyntheticEvent, useState } from "react";
 import "./PasswordGenerator.css"
 import Options from "../../Interfaces/Options";
 import PasswordDisplay from "../PasswordDisplay/PasswordDisplay";
@@ -21,7 +21,71 @@ function PasswordGenerator() {
         setPasswordLength(target.value);
     };
 
+    function passwordTest(password: string): boolean {
+        if(options.lowercase === true) {
+            if(!password.match(/[a-z]/)) {
+                return false;
+            };
+        };
+
+        if(options.uppercase === true) {
+            if(!password.match(/[A-Z]/)) {
+                return false;
+            };
+        };
+
+        if(options.numbers === true) {
+            if(!password.match(/[0-9]/)) {
+                return false;
+            };
+        };
+
+        if(options.symbols === true) {
+            if(!password.match(/[\W\S_]/)) {
+                return false;
+            };
+        };
+
+        return true;
+    }
+
     function generatePassword(): void {
+        let newPassword: string = "";
+        let characters: string = "";
+        const lowercaseChars: string = "abcdefghijklmnopqrstuvwxyz";
+        const uppercaseChars: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        const numbers: string = "0123456789";
+        const symbols: string = "!\"£$%^&*()_+`-=[]{};'#:@~,./<>?";
+
+        if(options.lowercase === true) {
+            characters += lowercaseChars;
+        };
+
+        if(options.uppercase === true) {
+            characters += uppercaseChars;
+        };
+
+        if(options.numbers === true) {
+            characters += numbers;
+        };
+
+        if(options.symbols === true) {
+            characters += symbols;
+        };
+
+        if(characters.length === 0) {
+            return;
+        };
+
+        for(let i = 0; i < passwordLength; i++) {
+            newPassword += characters.charAt(Math.floor(Math.random() * characters.length));
+        };
+
+        if(passwordTest(newPassword) === true) {
+            setPassword(newPassword);
+        } else {
+            generatePassword();
+        };
     };
 
     function updateOptions(option: string): void {
@@ -66,7 +130,7 @@ function PasswordGenerator() {
         <div className="password-generator">
             <h1 className="password-generator__header">Password Generator</h1>
             <PasswordDisplay password={password} />
-            <PasswordGeneratorBottom options={options} updateOptions={updateOptions} generatePassword={generatePassword} />
+            <PasswordGeneratorBottom passwordLength={passwordLength} updatePasswordLength={updatePasswordLength} options={options} updateOptions={updateOptions} generatePassword={generatePassword} />
         </div>
     );
 };
