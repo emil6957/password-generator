@@ -2,18 +2,14 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import React from "react";
 import GeneratorOptions from "../GeneratorOptions";
 
-test("Character Length number and slider value are synced", () => {
+test("function to sync slider value and display value is called on slider value changing", () => {
     const updateOptions = jest.fn();
     const updatePasswordLength = jest.fn();
     render(<GeneratorOptions passwordLength={10} updatePasswordLength={updatePasswordLength} updateOptions={updateOptions}/>);
     const slider = screen.getByRole("slider");
-    const charLength = screen.getByText("10");
 
     fireEvent.change(slider, { target: { value: 15 }});
-    expect(charLength).toHaveTextContent("15");
-
-    fireEvent.change(slider, { target: { value: 8 }});
-    expect(charLength).toHaveTextContent("8");
+    expect(updatePasswordLength).toBeCalled();
 });
 
 test("Checkboxes are checked as they are clicked", () => {

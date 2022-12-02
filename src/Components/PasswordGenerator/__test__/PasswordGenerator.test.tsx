@@ -70,6 +70,20 @@ describe("Testing each checkbox generating password individually", () => {
     });
 });
 
+describe("Testing slider", () => {
+    test("slider value and the display value are synced", () => {
+        render(<PasswordGenerator />);
+        const slider = screen.getByRole("slider");
+        const charLength = screen.getByText("10");
+
+        fireEvent.change(slider, { target: { value: 15 }});
+        expect(charLength).toHaveTextContent("15");
+
+        fireEvent.change(slider, { target: { value: 8 }});
+        expect(charLength).toHaveTextContent("8");
+    });
+}) ;
+
 describe("Testing passwords generated with slider", () => {
     test("new passwords are generated with different lengths dependant on the slider value", () => {
         render(<PasswordGenerator />);
