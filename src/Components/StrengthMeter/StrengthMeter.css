@@ -53,3 +53,8 @@
     background-color: red;    
     border: .125rem solid red;
 }
+
+.strength-meter__bar-filled-very-hard {
+    background-color: rgb(138, 7, 7);
+    border: .125rem solid rgb(138, 7 ,7);
+}
