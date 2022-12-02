@@ -7,17 +7,18 @@ import Options from "../../Interfaces/Options";
 
 interface PasswordGeneratorBottomProps {
     generatePassword: Function,
+    passwordStrength: string,
     passwordLength: number,
     updatePasswordLength: Function,
     options: Options,
     updateOptions: Function,
 }
 
-function PasswordGeneratorBottom({ generatePassword, passwordLength, updatePasswordLength, options, updateOptions }: PasswordGeneratorBottomProps) {
+function PasswordGeneratorBottom({ generatePassword, passwordStrength, passwordLength, updatePasswordLength, options, updateOptions }: PasswordGeneratorBottomProps) {
     return (
         <div className="password-generator-bottom">
             <GeneratorOptions passwordLength={passwordLength} updatePasswordLength={updatePasswordLength} updateOptions={updateOptions} />
-            <StrengthMeter strengthText="placeholder" />
+            <StrengthMeter passwordStrength={passwordStrength} />
             <GenerateButton options={options} generatePassword={generatePassword} />
         </div>
     );

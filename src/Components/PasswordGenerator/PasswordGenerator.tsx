@@ -13,6 +13,51 @@ function PasswordGenerator() {
         numbers: false,
         symbols: false,
     });
+    const [passwordStrength, setPasswordStrength] = useState<string>("easy");
+
+    function updatePasswordStrength(): void {
+        let optionsSelected: number = 0;
+        optionsSelected += options.lowercase === true ? 1 : 0;
+        optionsSelected += options.uppercase === true ? 1 : 0;
+        optionsSelected += options.numbers === true ? 1 : 0;
+        optionsSelected += options.symbols === true ? 1 : 0;
+
+        if(optionsSelected === 1) {
+            if(passwordLength <= 8) {
+                setPasswordStrength("easy");
+            } else {
+                setPasswordStrength("medium");
+            };
+        };
+
+        if(optionsSelected === 2) {
+            if(passwordLength <= 6) {
+                setPasswordStrength("easy");
+            } else if(passwordLength <= 8) {
+                setPasswordStrength("medium");
+            } else {
+                setPasswordStrength("hard");
+            };
+        };
+
+        if(optionsSelected === 3) {
+            if(passwordLength <= 6) {
+                setPasswordStrength("medium");
+            } else if(passwordLength <= 8) {
+                setPasswordStrength("hard");
+            } else {
+                setPasswordStrength("very-hard");
+            };
+        };
+
+        if(optionsSelected === 4) {
+            if(passwordLength <= 6) {
+                setPasswordStrength("hard");
+            } else {
+                setPasswordStrength("very-hard");
+            };
+        };
+    }
 
     function updatePasswordLength(e: SyntheticEvent): void {
         const target = e.target as typeof e.target & {
@@ -86,6 +131,8 @@ function PasswordGenerator() {
         } else {
             generatePassword();
         };
+
+        updatePasswordStrength();
     };
 
     function updateOptions(option: string): void {
@@ -130,7 +177,7 @@ function PasswordGenerator() {
         <div className="password-generator">
             <h1 className="password-generator__header">Password Generator</h1>
             <PasswordDisplay password={password} />
-            <PasswordGeneratorBottom passwordLength={passwordLength} updatePasswordLength={updatePasswordLength} options={options} updateOptions={updateOptions} generatePassword={generatePassword} />
+            <PasswordGeneratorBottom passwordStrength={passwordStrength} passwordLength={passwordLength} updatePasswordLength={updatePasswordLength} options={options} updateOptions={updateOptions} generatePassword={generatePassword} />
         </div>
     );
 };
