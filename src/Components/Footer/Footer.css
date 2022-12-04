@@ -1,0 +1,12 @@
+footer {
+    position: absolute;
+    bottom: 1rem;
+}
+
+.footer__link {
+    color: white;
+}
+
+.footer__link:hover {
+    color: #72f797;
+}

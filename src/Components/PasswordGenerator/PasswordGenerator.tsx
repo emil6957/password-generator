@@ -3,6 +3,7 @@ import "./PasswordGenerator.css"
 import Options from "../../Interfaces/Options";
 import PasswordDisplay from "../PasswordDisplay/PasswordDisplay";
 import PasswordGeneratorBottom from "../PasswordGeneratorBottom/PasswordGeneratorBottom";
+import Footer from "../Footer/Footer";
 
 function PasswordGenerator() {
     const [password, setPassword] = useState<string>("");
@@ -178,6 +179,7 @@ function PasswordGenerator() {
             <h1 className="password-generator__header">Password Generator</h1>
             <PasswordDisplay password={password} />
             <PasswordGeneratorBottom passwordStrength={passwordStrength} passwordLength={passwordLength} updatePasswordLength={updatePasswordLength} options={options} updateOptions={updateOptions} generatePassword={generatePassword} />
+            <Footer />
         </div>
     );
 };
