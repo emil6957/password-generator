@@ -120,6 +120,7 @@ function PasswordGenerator() {
         };
 
         if(characters.length === 0) {
+            alert("Please select at least 1 option");
             return;
         };
 
