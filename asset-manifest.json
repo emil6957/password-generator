@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/password-generator/static/css/main.450e7260.css",
-    "main.js": "/password-generator/static/js/main.84a6973a.js",
+    "main.css": "/password-generator/static/css/main.b4073453.css",
+    "main.js": "/password-generator/static/js/main.0bd99c35.js",
     "static/js/787.7da6eb2c.chunk.js": "/password-generator/static/js/787.7da6eb2c.chunk.js",
     "static/media/right-arrow.svg": "/password-generator/static/media/right-arrow.6da965d22b0399b31409e66dc27411fd.svg",
-    "static/media/copy.svg": "/password-generator/static/media/copy.aa65a5d5a06006f06f57469ad8225cc5.svg",
     "index.html": "/password-generator/index.html",
-    "main.450e7260.css.map": "/password-generator/static/css/main.450e7260.css.map",
-    "main.84a6973a.js.map": "/password-generator/static/js/main.84a6973a.js.map",
+    "static/media/copy.svg": "/password-generator/static/media/copy.aa65a5d5a06006f06f57469ad8225cc5.svg",
+    "main.b4073453.css.map": "/password-generator/static/css/main.b4073453.css.map",
+    "main.0bd99c35.js.map": "/password-generator/static/js/main.0bd99c35.js.map",
     "787.7da6eb2c.chunk.js.map": "/password-generator/static/js/787.7da6eb2c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.450e7260.css",
-    "static/js/main.84a6973a.js"
+    "static/css/main.b4073453.css",
+    "static/js/main.0bd99c35.js"
   ]
 }
