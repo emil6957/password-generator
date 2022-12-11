@@ -1,46 +1,96 @@
-# Getting Started with Create React App
+#Password Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+### The challenge
 
-In the project directory, you can run:
+User should be able to:
 
-### `npm start`
+- Choose the length of the password
+- Choose the characters the password will contain
+- Be able to generate passwords
+- Be able to copy passwords to clipboard
+- Be able to see the passwords strength
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Screenshots
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img width="613" alt="password-generator" src="https://user-images.githubusercontent.com/91159544/206935978-d755c05c-e176-44bd-8c9e-85c6490817d1.png">
 
-### `npm test`
+### Links
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Code URL: [https://github.com/emil6957/password-generator](https://github.com/emil6957/password-generator)
 
-### `npm run build`
+- Live site URL: [https://emil6957.github.io/password-generator](https://emil6957.github.io/password-generator)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## My process
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- React Typescript
+- CSS flexbox
+- Test driven development
 
-### `npm run eject`
+### What I learned
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+I learnt and got familiar with using some of typescripts features such as interfaces to define the types within an object.
+```js
+interface Options {
+    uppercase: boolean,
+    lowercase: boolean,
+    numbers: boolean,
+    symbols: boolean,
+}
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+export default Options;
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+And also defining variable types and functions
+```js
+    function passwordTest(password: string): boolean {
+        if(options.lowercase === true) {
+            if(!password.match(/[a-z]/)) {
+                return false;
+            };
+        };
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+        if(options.uppercase === true) {
+            if(!password.match(/[A-Z]/)) {
+                return false;
+            };
+        };
 
-## Learn More
+        if(options.numbers === true) {
+            if(!password.match(/[0-9]/)) {
+                return false;
+            };
+        };
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+        if(options.symbols === true) {
+            if(!password.match(/[\W\S_]/)) {
+                return false;
+            };
+        };
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+        return true;
+    }
+```
+
+This project has also been good for practicing TDD by writing my tests prio to writing the functions
+```js
+test("new passwords are generated with numbers option on containing only numbers", () => {
+    render(<PasswordGenerator />);
+    const password = screen.getByPlaceholderText("Password123!");
+    const numbersCheckbox = screen.getByLabelText("Include Numbers");
+    fireEvent.click(numbersCheckbox)
+    expect(numbersCheckbox).toBeChecked();
+
+    const generateButton = screen.getByRole("button", { name: /generate/i });
+    fireEvent.click(generateButton);
+
+    expect(password).toHaveDisplayValue(/^[0-9]+$/);
+});
+```
+
+### Useful resources
+- [https://www.youtube.com/watch?v=ydkQlJhodio&ab_channel=Fireship](https://www.youtube.com/watch?v=ydkQlJhodio&ab_channel=Fireship) - A video that gave me a basic rundown of why and how typescript is used.
+- [https://www.youtube.com/watch?v=7dTTFW7yACQ&list=PL4cUxeGkcC9gm4_-5UsNmLqMosM-dzuvQ&ab_channel=TheNetNinja](https://www.youtube.com/watch?v=7dTTFW7yACQ&list=PL4cUxeGkcC9gm4_-5UsNmLqMosM-dzuvQ&ab_channel=TheNetNinja) - This playlist showed me how to write and use tests with the react testing library.
